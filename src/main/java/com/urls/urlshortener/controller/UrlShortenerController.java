@@ -27,7 +27,6 @@ public class UrlShortenerController {
             summary = "Shorten a URL",
             description = "Creates a short URL from the supplied original URL."
     )
-
     @PostMapping("/api/shorten")
     public ResponseEntity<UrlResponse> shorten(@Valid @RequestBody UrlRequest request) {
         String shortUrl = service.createShortUrl(request.getUrl());
@@ -42,7 +41,6 @@ public class UrlShortenerController {
             @ApiResponse(responseCode = "302", description = "Redirect successful"),
             @ApiResponse(responseCode = "404", description = "Short URL not found")
     })
-
     @GetMapping("/r/{code}")
     public ResponseEntity<Void> redirect(@PathVariable String code) {
         String originalUrl = service.getOriginalUrl(code);
